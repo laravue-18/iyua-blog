@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-md-6 ">
                             <div class="logo-part">
-                                <img width="80%" src="images/TE-logo-footer.png" class="w-30 logo-footer" > <br><br>
+                                <img width="80%" src="{{ asset('assets/images/logo-lg.png') }}" class="w-30 logo-footer" > <br><br>
                                 <p>Los Angeles, California </p>
                                 <p>We are available for any kind of business opportunity and service to our community.</p>
                             </div>

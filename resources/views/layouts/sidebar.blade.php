@@ -17,13 +17,13 @@
                 <li>
                     <a href="{{ route('user.categories.index') }}" class=" waves-effect">
                         <i class="bx bx-home-circle"></i>
-                        <span>Categories</span>
+                        <span>Blog Categories</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('user.posts.index') }}" class=" waves-effect">
                         <i class="bx bx-home-circle"></i>
-                        <span>Posts</span>
+                        <span>Blog Posts</span>
                     </a>
                 </li>
                 <li>

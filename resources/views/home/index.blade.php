@@ -30,7 +30,7 @@
 
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4">Andrea James</h1>
+            <h2 class="font-weight-bold">Andrea James</h2>
             <p>Welcome to Today's Entrepreneur - the Broadcast Network that connects Businesses, Entrepreneurs, and Talent with/to their targeted audience globally.
                 We call it Today's Entrepreneur (TE) Tuesdays, where we interview and coach successful entrepreneurs as well as under the radar entrepreneurs; health & wellness, business and finance experts - share tangible tips and training.
             </p>
@@ -40,7 +40,7 @@
 
     <div class="container">
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-md-4">
                 <h2>Build</h2>
                 <p>
@@ -60,22 +60,30 @@
             </div>
         </div>
 
-        <hr>
-
-        <h2>Podcast</h2>
+        <h2 class="mb-3">Podcast</h2>
 
         <div class="row">
             @foreach($episodes as $episode)
                 <div class="col-md-3 mb-5">
-                    <div class="card">
+                    <div class="card shadow border" style="height: 500px;">
                         <img class="card-img-top img-fluid" src="{{ $channel['PHOTOLINK'] }}" alt="Card image cap">
-                        <div class="card-body">
-                            <p>Episode ID: {{ $episode['EPISODE_ID'] }}</p>
-                            <h4 class="card-title mt-0">{{ $episode['TITLE'] }}</h4>
-                            <p class="card-text">HOST NAME: {{ $episode['HOSTNAME'] }}</p>
-                            <p class="card-text">KEYWORDS: {{ $episode['KEYWORDS'] }}</p>
-                            <p class="card-text text-truncate">{{ $episode['DESCRIPTION'] }}</p>
-                            <a href="{{ route('podcast.show', $episode['EPISODE_ID']) }}" class="btn btn-secondary waves-effect waves-light">Listen Now!</a>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <p class="text-primary">Episode ID: {{ $episode['EPISODE_ID'] }}</p>
+                                <h4 class="card-title mt-0">{{ $episode['TITLE'] }}</h4>
+                                <p class="card-text text-info"> {{ $episode['HOSTNAME'] }} </p>
+                            </div>
+                            <div>
+                                <div>
+                                    @foreach(explode(',', $episode['KEYWORDS']) as $keyword)
+                                        <a href="#" class="badge badge-primary font-size-11 m-1">{{$keyword}}</a>
+                                    @endforeach
+                                </div>
+                                {{--                            <p class="card-text text-truncate">{{ $episode['DESCRIPTION'] }}</p>--}}
+                            </div>
+                            <div>
+                                <a href="{{ route('podcast.show', $episode['EPISODE_ID']) }}" class="btn btn-secondary waves-effect waves-light">Listen Now!</a>
+                            </div>
                         </div>
                     </div>
                 </div>

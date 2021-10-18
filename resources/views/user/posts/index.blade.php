@@ -5,7 +5,7 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-        @slot('title') Posts  @endslot
+        @slot('title') Blog Posts  @endslot
         @slot('li_1')  @endslot
     @endcomponent
 
