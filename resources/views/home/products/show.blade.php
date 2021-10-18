@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2 class="my-5">Product Detail</h2>
-        <div class="card">
+        <div class="card shadow border">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
@@ -11,7 +11,6 @@
                             <div>
                                 <img src="{{ asset('images/' . $product->image) }}" alt="" class="img-fluid mx-auto d-block">
                             </div>
-
                         </div>
                     </div>
 

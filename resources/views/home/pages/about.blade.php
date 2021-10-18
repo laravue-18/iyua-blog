@@ -1,19 +1,20 @@
 @extends('home.layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>About</h2>
-
+    <div class="container py-5">
+        <h1 class="text-uppercase mb-4">About</h1>
         <div class="row">
             <div class="col-md-7 order-md-2 align-middle">
-                <h2 class="featurette-heading">Global Resource Specialist, Visionary...<br> <span class="text-muted">Find out for yourself.</span></h2>
+                <h2 class="featurette-heading font-weight-bold">Global Resource Specialist, Visionary... </h2>
+                <h3 class="text-muted mb-4">Find out for yourself.</h3>
                 <p>
-
                     Andrea R. James has several descriptions that describe what she does:
                     Global Resource Specialist, Visionary, Networking/Collaboration Expert, Entrepreneur,
                     Diversity, Integrity, Relationship Global Builder, Got Purpose Growth Development
                     Expert, Teammember, Innovation/Creativity Community Leader, Problem Solver,
-                    Linchpin, and Angel. <p>
+                    Linchpin, and Angel.
+                </p>
+                <p>
                     Andrea R. James is among the quiet Trend Setters, who has turned her personal journey
                     into a non-profit company with purpose named “Today’s Entrepreneur”. &quot;Today&#39;s
                     Entrepreneur&quot; connects Businesses, Entrepreneurs, and Talent to their targeted
@@ -28,24 +29,24 @@
                     Economic Empowerment for Entrepreneurs and Business Owners in various industries
                     Worldwide. Ms. James has learned how to be a resourceful Problem Solver, which has
                     produced positive Top Shelf results that has set her apart from the crowd.
+                </p>
                 <p>
                     Because of
                     Andrea James no doubt, driven by passion for Entrepreneurs and Business Owners, she
                     has created &quot;Today&#39;s Entrepreneur&quot; for the Entrepreneurial Family, Female Business
                     Owner, and Young Entrepreneurs. Creating businesses with solid foundations takes a
-                    Team of Experts that have &quot;Today&#39;s Entrepreneur&quot; Mindset. <p>
+                    Team of Experts that have &quot;Today&#39;s Entrepreneur&quot; Mindset.
+                </p>
+                <p>
                     Andrea R. James &quot;Never Give Up&quot; mantra has ignited her passion to see Businesses
-                    leave living Legacies, prospering now and for many generations to follow.</p>
-                <!--
-                <form class="form-inline float-right">
-              <input type="button" value="Get Started Now" class="btn btn-primary">
-            </form>
-                -->
-                <br>
-                <br>
+                    leave living Legacies, prospering now and for many generations to follow.
+                </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <img width="500" class="featurette-image img-fluid mx-auto" src="images/card.png" alt="Generic placeholder image">
+                <img width="500" class="featurette-image img-fluid mx-auto"
+                     src="https://cdn.pixabay.com/photo/2014/08/15/06/16/imprint-418594_960_720.jpg"
+                     alt="Generic placeholder image"
+                >
             </div>
         </div>
 
