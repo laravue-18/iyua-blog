@@ -15,6 +15,11 @@ class HomeController extends Controller
 
         $response = Http::get('https://www.blacktradelines.com/cfc/mobile/mobile.cfc?wsdl&method=GetEpisodes&ChannelID=215&locale=us&os=android&network=blacktradelines&format=1&status=1&Published=1&limit=100');
         $episodes = $response->json();
+        foreach($episodes as $key => $episode){
+            $res = Http::get('https://www.blacktradelines.com/cfc/mobile/mobile.cfc?wsdl&method=GetRecordings&ChannelID=215&EpisodeID=' . $episode['EPISODE_ID'] . '&locale=us&os=android&network=blacktradelines&format=1&status=1&limit=100');
+
+            $episodes[$key] = array_merge( $res->json()[0], $episode);
+        }
 
         return view('home.index')->with(compact('episodes', 'channel'));
     }
@@ -25,6 +30,12 @@ class HomeController extends Controller
 
         $response = Http::get('https://www.blacktradelines.com/cfc/mobile/mobile.cfc?wsdl&method=GetEpisodes&ChannelID=215&locale=us&os=android&network=blacktradelines&format=1&status=1&Published=1&limit=100');
         $episodes = $response->json();
+
+        foreach($episodes as $key => $episode){
+            $res = Http::get('https://www.blacktradelines.com/cfc/mobile/mobile.cfc?wsdl&method=GetRecordings&ChannelID=215&EpisodeID=' . $episode['EPISODE_ID'] . '&locale=us&os=android&network=blacktradelines&format=1&status=1&limit=100');
+
+            $episodes[$key] = array_merge( $res->json()[0], $episode);
+        }
 
         return view('home.podcast.index')->with(compact('channel', 'episodes'));
     }

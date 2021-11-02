@@ -82,7 +82,28 @@
                                 {{--                            <p class="card-text text-truncate">{{ $episode['DESCRIPTION'] }}</p>--}}
                             </div>
                             <div>
-                                <a href="{{ route('podcast.show', $episode['EPISODE_ID']) }}" class="btn btn-secondary waves-effect waves-light">Listen Now!</a>
+                                <button class="btn btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#episode-modal-{{$episode['EPISODE_ID']}}">Listen Now!</button>
+                                <div id="episode-modal-{{$episode['EPISODE_ID']}}" class="episodeModal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>{{ $episode['TITLE'] }}</h5>
+
+                                                <p class="mb-4 texp-primary">CONFERENCE_ID: {{$episode['CONFERENCE_ID']}}</p>
+
+                                                <audio class="mb-5 w-100" controls>
+                                                    <source src="{{ 'https://www.blacktradelines.com/' . $episode['RECORDPATH'] }}" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
                             </div>
                         </div>
                     </div>
@@ -92,4 +113,17 @@
         </div>
 
     </div> <!-- /container -->
+@endsection
+
+@section('script')
+    <script>
+        $(function(){
+            $('.episodeModal').on('hidden.bs.modal', function () { //Change #myModal with your modal id
+                $('audio').each(function(){
+                this.pause(); // Stop playing
+                this.currentTime = 0; // Reset time
+                });
+            })
+        })
+    </script>
 @endsection
