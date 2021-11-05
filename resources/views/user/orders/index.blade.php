@@ -22,7 +22,6 @@
                             <th>Shipping Address</th>
                             <th>Amount</th>
                             <th>Date</th>
-{{--                            <th>Action</th>--}}
                         </tr>
                     </thead>
                     <tbody>
@@ -35,10 +34,6 @@
                                 <td>{{ $order->shipping_address }}</td>
                                 <td>$ {{ $order->amount }}</td>
                                 <td>{{ $order->created_at }}</td>
-{{--                                <td>--}}
-{{--                                    <a href="javascript:void(0);" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>--}}
-{{--                                    <a href="javascript:void(0);" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-close font-size-18"></i></a>--}}
-{{--                                </td>--}}
                             </tr>
                         @endforeach
 
