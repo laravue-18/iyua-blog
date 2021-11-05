@@ -43,7 +43,7 @@
 
                                 <td>{{ $order->order_id }}</td>
                                 <td>{{ $order->user->name }}</td>
-                                <td>{{ $order->product->name }}</td>
+                                <td>{{ $order->product ? $order->product->name : 'Deleted' }}</td>
                                 <td>{{ $order->payer_email }}</td>
                                 <td>{{ $order->shipping_address }}</td>
                                 <td>$ {{ $order->amount }}</td>

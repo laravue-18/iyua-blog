@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = ProductCategory::all();
 
         return view('user.products.create')->with(compact('categories'));
     }
@@ -31,7 +32,7 @@ class ProductController extends Controller
             'style' => 'required',
             'description' => 'required',
             'price' => 'required',
-            'category_id' => 'required',
+            'category_id' => '',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
 
@@ -48,51 +49,57 @@ class ProductController extends Controller
             'description' => $request->input('description'),
             'image' => $newImageName,
         ]);
-        return redirect('/user/products')->with('message', 'New Product has been added!');
+        return redirect(route('user.products.index'))->with('message', 'New Product has been added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
-        //
+        $categories = ProductCategory::all();
+
+        return view('user.products.edit')->with(compact('product', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'style' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'category_id' => '',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        if($request->input('image')){
+            $newImageName = uniqid() . '-' . $request->name . '.' .
+                $request->image->extension();
+
+            $request->image->move(public_path('images'), $newImageName);
+        }else{
+            $newImageName = $product->image;
+        }
+
+
+        $product->update([
+            'name' => $request->input('name'),
+            'style' => $request->input('style'),
+            'price' => $request->input('price'),
+            'category_id' => $request->input('category_id'),
+            'description' => $request->input('description'),
+            'image' => $newImageName,
+        ]);
+
+        return redirect(route('user.products.index'))->with('message', 'The Product has been updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect(route('user.products.index'));
     }
 }

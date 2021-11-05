@@ -6,7 +6,7 @@ Login
 
 @section('body')
 
-<body>
+<body style="background-image: url(https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80);">
     @endsection
 
     @section('content')
@@ -19,8 +19,12 @@ Login
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card overflow-hidden">
                         <div class="card-body pt-0">
-                            <div class="p-2 pt-5">
-                                <h1 class="mb-4">Sign In</h1>
+                            <div class="p-2">
+                                <div class="text-center py-4">
+                                    <a class="navbar-brand" href="/">
+                                        <img src="/assets/images/logo-lg.png" style="height: 4rem;">
+                                    </a>
+                                </div>
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="form-group">
@@ -52,9 +56,9 @@ Login
                                         <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Sign In</button>
                                     </div>
 
-                                    <div class="mt-4 text-center">
-                                        <a href="password/reset" class="text-muted"><i class="mdi mdi-lock mr-1"></i> Forgot your password?</a>
-                                    </div>
+{{--                                    <div class="mt-4 text-center">--}}
+{{--                                        <a href="password/reset" class="text-muted"><i class="mdi mdi-lock mr-1"></i> Forgot your password?</a>--}}
+{{--                                    </div>--}}
                                 </form>
                             </div>
                         </div>

@@ -1,18 +1,18 @@
 @extends('layouts.master')
 
-@section('title') Categories @endsection
+@section('title') Product Categories @endsection
 
 @section('content')
 
     @component('common-components.breadcrumb')
-        @slot('title') Blog Categories  @endslot
+        @slot('title') Product Categories  @endslot
         @slot('li_1')  @endslot
     @endcomponent
 
     <div class="card">
         <div class="card-body">
             <div class="text-sm-right">
-                <a href="{{ route('user.categories.create') }}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i> Add New Category</a>
+                <a href="{{ route('user.product-categories.create') }}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i> Add New Category</a>
             </div>
 
             <div class="table-responsive">
@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{ $category->name }}</td>
                                 <td>
-                                    <a href="{{ route('user.categories.edit', $category->id) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                    <a href="{{ route('user.product-categories.edit', $category->id) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
                                     <a href="javascript:void(0);"
                                        class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
                                        onclick="
@@ -40,7 +40,7 @@
                                         <i class="mdi mdi-close font-size-18"></i>
                                         <form
                                             id="row-delete-{{$category->id}}"
-                                            action="{{ route('user.categories.destroy', $category->id) }}" method="POST"
+                                            action="{{ route('user.product-categories.destroy', $category->id) }}" method="POST"
                                             style="display: none;"
                                         >
                                             @csrf

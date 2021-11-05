@@ -27,6 +27,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('user.product-categories.index') }}" class=" waves-effect">
+                        <i class="bx bx-home-circle"></i>
+                        <span>Product Categories</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('user.products.index') }}" class=" waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Products</span>

@@ -6,27 +6,24 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class ProductCategory extends Model
 {
     use HasFactory;
+
     use Sluggable;
 
-    protected $guarded = [];
-
-    public function author(){
-        return $this->belongsTo('App\Models\User', 'user_id');
-    }
+    protected $fillable = ['slug', 'name'];
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public  function products(){
+        return $this->hasMany(Product::class, 'category_id');
     }
 }

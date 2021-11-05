@@ -19,14 +19,9 @@
                 <table class="table table-centered table-nowrap">
                     <thead class="thead-light">
                         <tr>
-                            <th style="width: 20px;">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                                </div>
-                            </th>
                             <th>Title</th>
                             <th>Author</th>
+                            <th>Category</th>
                             <th>Status</th>
                             <th>View Post</th>
                             <th>Action</th>
@@ -35,17 +30,11 @@
                     <tbody>
                         @foreach($posts as $post)
                             <tr>
-                                <td>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                        <label class="custom-control-label" for="customCheck2">&nbsp;</label>
-                                    </div>
-                                </td>
-
                                 <td>{{ $post->title }}</td>
                                 <td>
                                     {{ $post->author->name }}
                                 </td>
+                                <td>{{ $post->category ? $post->category->name : 'Uncategoriezed' }}</td>
                                 <td>
                                     Published
                                 </td>
@@ -53,8 +42,25 @@
                                     <a href="{{ route('posts.show', $post->slug) }}" class="btn btn-primary btn-sm btn-rounded">View Details</a>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0);" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                    <a href="javascript:void(0);" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-close font-size-18"></i></a>
+                                    <a href="{{ route('user.posts.edit', $post->id) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                    <a href="javascript:void(0);"
+                                       class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                       onclick="
+                                           event.preventDefault();
+                                           if(confirm('Really Delete?')){
+                                           document.getElementById('row-delete-{{$post->id}}').submit();
+                                           }"
+                                    >
+                                        <i class="mdi mdi-close font-size-18"></i>
+                                        <form
+                                            id="row-delete-{{$post->id}}"
+                                            action="{{ route('user.posts.destroy', $post->id) }}" method="POST"
+                                            style="display: none;"
+                                        >
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

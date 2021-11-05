@@ -30,7 +30,7 @@ class CategoryController extends Controller
             'name' => $request->input('name'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->name),
         ]);
-        return redirect('/user/categories')->with('message', 'Your Category has been added!');
+        return redirect(route('user.categories.index'))->with('message', 'Your Category has been added!');
     }
 
     public function show(Category $category)
@@ -38,37 +38,31 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category)
     {
-        //
+        return view('user.categories.edit')->with(compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $category->update([
+            'name' => $request->input('name'),
+            'slug' => SlugService::createSlug(Post::class, 'slug', $request->name),
+        ]);
+        return redirect(route('user.categories.index'))->with('message', 'Your Category has been updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category)
     {
-        //
+        foreach ($category->posts as $post){
+            $post->update(['category_id' => 0]);
+        }
+        $category->delete();
+
+        return redirect(route('user.categories.index'))->with('message', 'Category has been deleted!');
     }
 }

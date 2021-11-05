@@ -13,7 +13,14 @@
         <div class="card-body">
             <form action="{{ route('user.posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
+                <div class="form-group">
+                    <label for="">Category</label>
+                    <select name="category_id" id="" class="form-control">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group">
                     <label>Title</label>
                     <input name="title" type="text" class="form-control">
