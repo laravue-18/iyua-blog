@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -49,7 +50,9 @@ class HomeController extends Controller
 
     public  function store(){
         $products = Product::all();
-        return view('home.products.index')->with(compact('products'));
+        $categories = ProductCategory::all();
+
+        return view('home.products.index')->with(compact('products', 'categories'));
     }
 
     public function showProduct($id){

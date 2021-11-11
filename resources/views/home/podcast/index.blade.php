@@ -20,7 +20,7 @@
             @foreach($episodes as $episode)
                 <div class="col-md-3 mb-5">
                     <div class="card shadow border" style="height: 500px;">
-                        <img class="card-img-top img-fluid" src="{{ $channel['PHOTOLINK'] }}" alt="Card image cap">
+                        <img class="card-img-top img-fluid cursor-pointer" src="{{ $channel['PHOTOLINK'] }}" alt="Card image cap" data-toggle="modal" data-target="#episode-modal-{{$episode['EPISODE_ID']}}">
                         <div class="card-body d-flex flex-column justify-content-between">
                             <div>
                                 <p class="text-primary">Episode ID: {{ $episode['EPISODE_ID'] }}</p>
@@ -30,14 +30,15 @@
                             <div>
                                 <div>
                                     @foreach(explode(',', $episode['KEYWORDS']) as $keyword)
+                                        @if($loop->index < 5)
                                         <a href="#" class="badge badge-primary font-size-11 m-1">{{$keyword}}</a>
+                                        @endif
                                     @endforeach
                                 </div>
     {{--                            <p class="card-text text-truncate">{{ $episode['DESCRIPTION'] }}</p>--}}
                             </div>
-                            <div>
-                                <button class="btn btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#episode-modal-{{$episode['EPISODE_ID']}}">Listen Now!</button>
-                                <div id="episode-modal-{{$episode['EPISODE_ID']}}" class="episodeModal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <button class="btn btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#episode-modal-{{$episode['EPISODE_ID']}}">Listen Now!</button>
+                            <div id="episode-modal-{{$episode['EPISODE_ID']}}" class="episodeModal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header border-0">
@@ -58,7 +59,6 @@
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
-                            </div>
                         </div>
                     </div>
                 </div>

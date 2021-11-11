@@ -8,7 +8,9 @@
                 @foreach($posts as $post)
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="card-img img-fluid" src="{{ asset('/images/' . $post->image ) }}" alt="Card image">
+                            <a href="{{ route('posts.show', $post->slug) }}">
+                                <img class="card-img img-fluid" src="{{ asset('/images/' . $post->image ) }}" alt="Card image">
+                            </a>
                         </div>
                         <div class="col-md-8">
                             <h5 class="card-title">{{ $post->title }}</h5>

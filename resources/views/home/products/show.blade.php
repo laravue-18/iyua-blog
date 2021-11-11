@@ -16,7 +16,7 @@
 
                     <div class="col-md-6">
                         <div class="mt-4 mt-xl-3">
-                            <a href="#" class="text-primary">{{ $product->category->name }}</a>
+                            <a href="javascript:void(0)" class="text-primary">{{ $product->category ? $product->category->name : 'Uncategorized'}}</a>
                             <h4 class="mt-1 mb-3">{{ $product->name }}</h4>
 
                             <h5 class="mb-4">Price : <b>${{ $product->price }} USD</b></h5>

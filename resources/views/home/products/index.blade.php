@@ -17,29 +17,50 @@
             </div>
         </div>
 
-        <h2 class="mb-3">Products</h2>
         <div class="row">
-            @foreach($products as $product)
-                <div class="col-xl-3 col-md-4 col-sm-2">
-                    <div class="card border">
-                        <div class="card-body">
-                            <div class="product-img position-relative">
-                                <div class="avatar-sm product-ribbon">
-                                </div>
-                                <img src="{{ asset('images/' . $product->image) }}" alt="" class="img-fluid mx-auto d-block">
-                            </div>
-                            <div class="mt-4 text-center">
-                                <h5 class="mb-3 text-truncate"><a href="#" class="text-dark">{{ $product->name }} </a></h5>
-
-                                <h5 class="my-0"> <b>${{ $product->price }}</b></h5>
-
-                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-secondary mt-4">Buy Now</a>
-
-                            </div>
+            <div class="col-md-3">
+                <div class="card border">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="font-size-14 mb-3">Categories</h5>
+                            <ul class="list-unstyled product-list">
+                                @foreach($categories as $category)
+                                    <li><a href="javascript:void(0)"><i class="mdi mdi-chevron-right mr-1"></i>
+                                        {{ $category->name }}</a></li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+            <div class="col-md-9">
+                <h2 class="mb-3">Products</h2>
+                <div class="row">
+                    @foreach($products as $product)
+                        <div class="col-xl-3 col-md-4 col-sm-2">
+                            <div class="card border">
+                                <div class="card-body">
+                                    <div class="product-img position-relative">
+                                        <div class="avatar-sm product-ribbon">
+                                        </div>
+                                        <a href="{{ route('products.show', $product->id) }}">
+                                            <img src="{{ asset('images/' . $product->image) }}" alt="" class="img-fluid mx-auto d-block">
+                                        </a>
+                                    </div>
+                                    <div class="mt-4 text-center">
+                                        <h5 class="mb-3 text-truncate"><a href="#" class="text-dark">{{ $product->name }} </a></h5>
+
+                                        <h5 class="my-0"> <b>${{ $product->price }}</b></h5>
+
+                                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-secondary mt-4">Buy Now</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
     </div>
