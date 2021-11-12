@@ -44,6 +44,12 @@
                         <span>Orders</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('user.orders.index') }}" class=" waves-effect">
+                        <i class="bx bx-home-circle"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
