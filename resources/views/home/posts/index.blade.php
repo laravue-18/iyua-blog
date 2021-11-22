@@ -23,7 +23,7 @@
                 @endforeach
             </div>
             <div class="col-md-5">
-
+                <x-blog-categories-list></x-blog-categories-list>
             </div>
         </div>
 
