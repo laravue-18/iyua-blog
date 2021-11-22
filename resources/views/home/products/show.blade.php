@@ -16,33 +16,23 @@
 
                     <div class="col-md-6">
                         <div class="mt-4 mt-xl-3">
-                            <a href="javascript:void(0)" class="text-primary">{{ $product->category ? $product->category->name : 'Uncategorized'}}</a>
+                            <a href="{{ $product->category ? '/store?category='.$product->category->id : 'javascript:void(0)' }}" class="text-primary">{{ $product->category ? $product->category->name : 'Uncategorized'}}</a>
                             <h4 class="mt-1 mb-3">{{ $product->name }}</h4>
 
                             <h5 class="mb-4">Price : <b>${{ $product->price }} USD</b></h5>
                             <p class="text-muted mb-4">{{ $product->description }}</p>
 
-                            @auth
-{{--                                <div style="width:200px" id="paypal-button-container"></div>--}}
-
-                                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                                    <input type="hidden" name="cmd" value="_xclick">
-                                    <input type="hidden" name="business" value="abrakadabra3232@yandex.ru">
-                                    <input type="hidden" name="item_name" value="{{ $product->name }}">
-                                    <input type="hidden" name="item_number" value="{{ $product->id }}">
-                                    <input type="hidden" name="amount" value="{{ $product->price }}">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="currency_code" value="USD">
-                                    <input type="hidden" name="notify_url" value="{{ route('user.paypal') }}">
-                                    <input type="hidden" name="success_url" value="{{ route('user.products.show', $product->id) }}">
-
-                                    <input type="image" name="submit"
-                                           src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-                                           alt="PayPal - The safer, easier way to pay online">
-                                </form>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-secondary">Login to Buy Now</a>
-                            @endauth
+                            <form action="{{ route('checkout.post') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <div class="d-flex align-items-center mb-3">
+                                    <label class="mb-0">Quantity</label>
+                                    <input type="number" class="form-control ml-3" name="qty" style="width: 100px;" value="1">
+                                </div>
+                                <button class="btn btn-secondary">Checkout</button>
+                            </form>
 
                         </div>
                     </div>

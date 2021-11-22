@@ -32,6 +32,10 @@ Route::get('pages/{page}', [HomeController::class, 'showPage'])->name('pages.sho
 
 Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
 
+Route::post('checkout', [\App\Http\Controllers\CheckoutController::class, 'post'])->name('checkout.post');
+Route::get('checkout/success', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('checkout/cancel', [\App\Http\Controllers\CheckoutController::class, 'cancel'])->name('checkout.cancel');
+
 Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
     Route::view('dashboard', 'user.dashboard')->name('dashboard');
     Route::resource('posts', PostController::class);
