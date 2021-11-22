@@ -48,58 +48,38 @@
     <div class="bg-dark py-5 text-white">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-6 ">
-                            <div class="logo-part">
-                                <img width="80%" src="{{ asset('assets/images/logo-lg.png') }}" class="w-30 logo-footer" > <br><br>
-                                <p>Los Angeles, California </p>
-                                <p>We are available for any kind of business opportunity and service to our community.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 px-4">
-                            <h6> About Company</h6>
-                            <p>We break the chains of poverty</p>
-                            <a href="#" class="btn-footer"> More Info </a><br>
-                            <a href="#" class="btn-footer"> Contact Us</a>
-                        </div>
-                    </div>
+                <div class="col-md-3">
+                    <img width="80%" src="{{ asset('assets/images/logo-lg.png') }}" class="w-30 logo-footer" > <br><br>
+                    <p>Los Angeles, California </p>
+                    <p>We are available for any kind of business opportunity and service to our community.</p>
                 </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-6 px-4">
-                            <h6> Resources</h6>
-                            <div class="row ">
-                                <div class="col-md">
-                                    <ul>
-                                        <li> <a href="sponsorship.html"> Sponsorship & Advertising</a> </li>
-                                        <li> <a href="becomeaguest.html"> Become a Guest</a> </li>
-                                        <li> <a href="becomeahost.html"> Become a Host</a> </li>
-                                        <li> <a href="franchise.html">Franchise Services</a> </li>
-                                        <li> <a href="donations.html"> Donations</a> </li>
-                                        <li> <a href="sponsorship.html"> Terms of Use</a> </li>
+                <div class="col-md-3">
+                    <h6 class="text-light"> About Company</h6>
+                    <p>We break the chains of poverty</p>
+                    <a href="/pages/about" class="d-block"> More Info </a>
+                    <a href="/pages/contact" class="d-block"> Contact Us</a>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-light mb-4"> Resources</h6>
 
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 ">
-                            <h6> Newsletter</h6>
-                            <div class="social">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            </div>
-                            <form class="form-footer my-3">
-                                <input type="text"  placeholder="search here...." name="search">
-                                <input type="button" value="Go" >
-                            </form>
-                            <p>Get updates when we put out more information.</p>
-                        </div>
-                    </div>
+                    <a href="/pages/advertising" class="d-block"> Sponsorship & Advertising</a>
+                    <a href="/pages/become-a-guest" class="d-block"> Become a Guest</a>
+                    <a href="/pages/become-a-host" class="d-block"> Become a Host</a>
+                    <a href="/pages/franchising" class="d-block">Franchise Services</a>
+                    <a href="/pages/donations" class="d-block"> Donations</a>
+                    <a href="/pages/terms-of-use" class="d-block"> Terms of Use</a>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-light mb-4"> Newsletter</h6>
+                    <form class="mb-4">
+                        <input type="text"  placeholder="search here...." name="search">
+                        <input type="button" value="Go" >
+                    </form>
+                    <p>Get updates when we put out more information.</p>
                 </div>
             </div>
             <div class="footer-copyright text-center py-3">
-                Copyright © 2020 Today's Entrepreneur. All rights reserved.
+                Copyright © 2021 Today's Entrepreneur. All rights reserved.
             </div>
         </div>
     </div>
