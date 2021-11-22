@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -49,10 +50,13 @@ class HomeController extends Controller
     }
 
     public  function store(){
-        $products = Product::all();
-        $categories = ProductCategory::all();
+        if(request('category')){
+            $products = ProductCategory::find(request('category'))->products;
+        }else{
+            $products = Product::all();
+        }
 
-        return view('home.products.index')->with(compact('products', 'categories'));
+        return view('home.products.index')->with(compact('products' ));
     }
 
     public function showProduct($id){

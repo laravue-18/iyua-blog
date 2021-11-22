@@ -23,7 +23,23 @@
                             <p class="text-muted mb-4">{{ $product->description }}</p>
 
                             @auth
-                                <div style="width:200px" id="paypal-button-container"></div>
+{{--                                <div style="width:200px" id="paypal-button-container"></div>--}}
+
+                                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                                    <input type="hidden" name="cmd" value="_xclick">
+                                    <input type="hidden" name="business" value="abrakadabra3232@yandex.ru">
+                                    <input type="hidden" name="item_name" value="{{ $product->name }}">
+                                    <input type="hidden" name="item_number" value="{{ $product->id }}">
+                                    <input type="hidden" name="amount" value="{{ $product->price }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="currency_code" value="USD">
+                                    <input type="hidden" name="notify_url" value="{{ route('user.paypal') }}">
+                                    <input type="hidden" name="success_url" value="{{ route('user.products.show', $product->id) }}">
+
+                                    <input type="image" name="submit"
+                                           src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                                           alt="PayPal - The safer, easier way to pay online">
+                                </form>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-secondary">Login to Buy Now</a>
                             @endauth
@@ -43,73 +59,73 @@
     </script>
 
     <script>
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                // This function sets up the details of the transaction, including the amount and line item details.
-                return actions.order.create({
-                    application_context: {
-                        brand_name : '{{ $product->name }}',
-                        user_action : 'PAY_NOW',
-                    },
-                    purchase_units: [{
-                        amount: {
-                            value: '{{ $product->price }}'
-                        }
-                    }],
-                });
-            },
+        {{--paypal.Buttons({--}}
+        {{--    createOrder: function(data, actions) {--}}
+        {{--        // This function sets up the details of the transaction, including the amount and line item details.--}}
+        {{--        return actions.order.create({--}}
+        {{--            application_context: {--}}
+        {{--                brand_name : '{{ $product->name }}',--}}
+        {{--                user_action : 'PAY_NOW',--}}
+        {{--            },--}}
+        {{--            purchase_units: [{--}}
+        {{--                amount: {--}}
+        {{--                    value: '{{ $product->price }}'--}}
+        {{--                }--}}
+        {{--            }],--}}
+        {{--        });--}}
+        {{--    },--}}
 
-            onApprove: function(data, actions) {
-                let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        {{--    onApprove: function(data, actions) {--}}
+        {{--        let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');--}}
 
-                return actions.order.capture().then(function(details) {
-                    if(details.status == 'COMPLETED'){
-                        return fetch('/orders', {
-                            method: 'post',
-                            headers: {
-                                'content-type': 'application/json',
-                                "Accept": "application/json, text-plain, */*",
-                                "X-Requested-With": "XMLHttpRequest",
-                                "X-CSRF-TOKEN": token
-                            },
-                            body: JSON.stringify({
-                                detail: details,
-                                product_id: {{ $product->id }},
-                                // orderId     : data.orderID,
-                                // id : details.id,
-                                // status: details.status,
-                                // payerEmail: details.payer.email_address,
-                            })
-                        })
-                            .then(status)
-                            .then(function(response){
-                                alert('Paid Successfully!!')
-                                // redirect to the completed page if paid
-                                // window.location.href = '/pay-success';
-                            })
-                            .catch(function(error) {
-                                alert(error)
-                                // redirect to failed page if internal error occurs
-                                // window.location.href = '/pay-failed?reason=internalFailure';
-                            });
-                    }else{
-                        window.location.href = '/pay-failed?reason=failedToCapture';
-                    }
-                });
-            },
+        {{--        return actions.order.capture().then(function(details) {--}}
+        {{--            if(details.status == 'COMPLETED'){--}}
+        {{--                return fetch('/orders', {--}}
+        {{--                    method: 'post',--}}
+        {{--                    headers: {--}}
+        {{--                        'content-type': 'application/json',--}}
+        {{--                        "Accept": "application/json, text-plain, */*",--}}
+        {{--                        "X-Requested-With": "XMLHttpRequest",--}}
+        {{--                        "X-CSRF-TOKEN": token--}}
+        {{--                    },--}}
+        {{--                    body: JSON.stringify({--}}
+        {{--                        detail: details,--}}
+        {{--                        product_id: {{ $product->id }},--}}
+        {{--                        // orderId     : data.orderID,--}}
+        {{--                        // id : details.id,--}}
+        {{--                        // status: details.status,--}}
+        {{--                        // payerEmail: details.payer.email_address,--}}
+        {{--                    })--}}
+        {{--                })--}}
+        {{--                    .then(status)--}}
+        {{--                    .then(function(response){--}}
+        {{--                        alert('Paid Successfully!!')--}}
+        {{--                        // redirect to the completed page if paid--}}
+        {{--                        // window.location.href = '/pay-success';--}}
+        {{--                    })--}}
+        {{--                    .catch(function(error) {--}}
+        {{--                        alert(error)--}}
+        {{--                        // redirect to failed page if internal error occurs--}}
+        {{--                        // window.location.href = '/pay-failed?reason=internalFailure';--}}
+        {{--                    });--}}
+        {{--            }else{--}}
+        {{--                window.location.href = '/pay-failed?reason=failedToCapture';--}}
+        {{--            }--}}
+        {{--        });--}}
+        {{--    },--}}
 
-            onCancel: function (data) {
-                // window.location.href = '/pay-failed?reason=userCancelled';
-            }
+        {{--    onCancel: function (data) {--}}
+        {{--        // window.location.href = '/pay-failed?reason=userCancelled';--}}
+        {{--    }--}}
 
-        }).render('#paypal-button-container');
-        // This function displays Smart Payment Buttons on your web page.
+        {{--}).render('#paypal-button-container');--}}
+        {{--// This function displays Smart Payment Buttons on your web page.--}}
 
-        function status(res) {
-            if (!res.ok) {
-                throw new Error(res.statusText);
-            }
-            return res;
-        }
+        {{--function status(res) {--}}
+        {{--    if (!res.ok) {--}}
+        {{--        throw new Error(res.statusText);--}}
+        {{--    }--}}
+        {{--    return res;--}}
+        {{--}--}}
     </script>
 @endsection

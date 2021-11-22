@@ -19,25 +19,13 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div class="card border">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="font-size-14 mb-3">Categories</h5>
-                            <ul class="list-unstyled product-list">
-                                @foreach($categories as $category)
-                                    <li><a href="javascript:void(0)"><i class="mdi mdi-chevron-right mr-1"></i>
-                                        {{ $category->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <x-product-categories-list></x-product-categories-list>
             </div>
             <div class="col-md-9">
-                <h2 class="mb-3">Products</h2>
+                <h2 class="mb-3">{{ request()->input('category') ? \App\Models\ProductCategory::find(request()->input('category'))->name : 'Products' }}</h2>
                 <div class="row">
-                    @foreach($products as $product)
-                        <div class="col-xl-3 col-md-4 col-sm-2">
+                    @forelse($products as $product)
+                        <div class="col-xl-3 col-md-4 col-sm-6">
                             <div class="card border">
                                 <div class="card-body">
                                     <div class="product-img position-relative">
@@ -58,7 +46,12 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12">
+                            <h3>Whoops!</h3>
+                            <p>No products available in this category</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>

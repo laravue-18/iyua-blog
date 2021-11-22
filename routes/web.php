@@ -39,5 +39,11 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
     Route::resource('product-categories', \App\Http\Controllers\ProductCategoryController::class);
     Route::resource('products', \App\Http\Controllers\ProductController::class);
     Route::resource('orders', \App\Http\Controllers\OrderController::class);
+
+    Route::get('paypal', function(){
+        \Illuminate\Support\Facades\Log::alert(request());
+    })->name('paypal');
+
+    Route::view('setting', 'user.setting')->name('setting');
 });
 

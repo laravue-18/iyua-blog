@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.orders.index') }}" class=" waves-effect">
+                    <a href="{{ route('user.setting') }}" class=" waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Setting</span>
                     </a>
