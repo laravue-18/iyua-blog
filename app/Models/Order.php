@@ -9,7 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
+    protected $fillable = [
+        'first_name', 'last_name', 'email', 'address1', 'address2', 'country', 'state', 'city', 'postcode', 'phone', 'product_id', 'product_name', 'qty', 'status'
+    ];
 
     public function user()
     {

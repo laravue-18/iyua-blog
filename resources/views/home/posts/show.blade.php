@@ -4,8 +4,13 @@
     <div class="container py-5">
         <div>
             <h1>{{ $post->title }}</h1>
-            <p class="mb-4">
+            <p class="">
                 <span class="">{{ date('M d, Y', strtotime($post->updated_at))}} by {{ $post->author->name }}</span>
+            </p>
+            <p class="mb-4">
+                <a href="{{ route('posts') }}">blog</a>
+                >
+                <a href="/posts?category={{ $post->category->id }}">{{ $post->category->name }}</a>
             </p>
 
         </div>

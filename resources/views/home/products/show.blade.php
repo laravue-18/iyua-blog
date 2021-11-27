@@ -25,8 +25,8 @@
                             <form action="{{ route('checkout.post') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" name="name" value="{{ $product->name }}">
-                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <input type="hidden" name="product_name" value="{{ $product->name }}">
+                                <input type="hidden" name="product_price" value="{{ $product->price }}">
                                 <div class="d-flex align-items-center mb-3">
                                     <label class="mb-0">Quantity</label>
                                     <input type="number" class="form-control ml-3" name="qty" style="width: 100px;" value="1">

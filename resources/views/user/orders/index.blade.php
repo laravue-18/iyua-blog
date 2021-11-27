@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title') Posts @endsection
+@section('title') Orders @endsection
 
 @section('content')
 
     @component('common-components.breadcrumb')
-        @slot('title') Posts  @endslot
+        @slot('title') Orders  @endslot
         @slot('li_1')  @endslot
     @endcomponent
 
@@ -15,25 +15,23 @@
                 <table class="table table-centered table-nowrap">
                     <thead class="thead-light">
                         <tr>
-                            <th>OrderID</th>
-                            <th>Buyer</th>
-                            <th>Product</th>
-                            <th>Payer Email</th>
                             <th>Shipping Address</th>
-                            <th>Amount</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
                             <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($orders as $order)
                             <tr>
-                                <td>{{ $order->order_id }}</td>
-                                <td>{{ $order->user->name }}</td>
-                                <td>{{ $order->product ? $order->product->name : 'Deleted' }}</td>
-                                <td>{{ $order->payer_email }}</td>
-                                <td>{{ $order->shipping_address }}</td>
-                                <td>$ {{ $order->amount }}</td>
+                                <td>{{ $order->address1 }}</td>
+                                <td>{{ $order->product_name }}</td>
+                                <td>{{ $order->qty }}</td>
                                 <td>{{ $order->created_at }}</td>
+                                <th>{{ $order->status }}</th>
+                                <td></td>
                             </tr>
                         @endforeach
 

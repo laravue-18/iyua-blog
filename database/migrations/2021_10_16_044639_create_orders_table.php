@@ -15,29 +15,20 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned()->nullable();
-//            $table->foreign('user_id')->references('id')->on('users')
-//                ->onUpdate('cascade')->onDelete('set null');
-            $table->string('order_id');
-            $table->integer('product_id')->unsigned()->nullable();
-            $table->string('payer_email');
-            $table->string('shipping_name');
-            $table->string('shipping_address');
-//            $table->string('shipping_address_line_2')->nullable();
-//            $table->string('shipping_city')->nullable();
-//            $table->string('shipping_province')->nullable();
-//            $table->string('shipping_postalcode')->nullable();
-//            $table->string('shipping_phone')->nullable();
-//            $table->string('shipping_name_on_card')->nullable();
-//            $table->string('shipping_discount')->default(0);
-//            $table->string('shipping_discount_code')->nullable();
-//            $table->integer('shipping_subtotal')->nullable();
-//            $table->integer('shipping_tax')->nullable();
-            $table->integer('amount');
-            $table->string('currency');
-            $table->string('payment_method')->default('paypal');
-            $table->boolean('shipped')->default(false);
-            $table->string('error')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('address1');
+            $table->string('address2')->nullable();
+            $table->string('country');
+            $table->string('state');
+            $table->string('city');
+            $table->integer('postcode');
+            $table->string('phone');
+            $table->integer('product_id');
+            $table->string('product_name');
+            $table->integer('qty');
+            $table->string('status');
 
             $table->timestamps();
         });

@@ -50,9 +50,9 @@
                         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="buyNow">
                             <input type="hidden" name="cmd" value="_xclick">
                             <input type="hidden" name="business" value="abrakadabra3232@yandex.ru">
-                            <input type="hidden" name="item_name" value="{{ session('cart.name') }}">
+                            <input type="hidden" name="item_name" value="{{ session('cart.product_name') }}">
                             <input type="hidden" name="item_number" value="MEM32507725">
-                            <input type="hidden" name="amount" value="{{ session('cart.price') }}">
+                            <input type="hidden" name="amount" value="{{ session('cart.product_price') }}">
                             <input type="hidden" name="quantity" value="{{ session('cart.qty') }}">
                             <input type="hidden" name="currency_code" value="USD">
                             <input type="hidden" name="return" value="{{ route('checkout.success') }}">
