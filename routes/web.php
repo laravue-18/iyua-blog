@@ -48,6 +48,7 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
         \Illuminate\Support\Facades\Log::alert(request());
     })->name('paypal');
 
-    Route::view('setting', 'user.setting')->name('setting');
+    Route::get('setting', [\App\Http\Controllers\ConfigurationController::class, 'index'])->name('setting');
+    Route::put('setting', [\App\Http\Controllers\ConfigurationController::class, 'update'])->name('setting');
 });
 

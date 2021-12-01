@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\CoreConfig;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class CheckoutController extends Controller
                 'postcode' => 'required',
                 'phone' => 'required',
             ]);
+            $core_config = CoreConfig::all()->pluck('value', 'code');
             session()->put('shipping_address', $data);
-            return view('home.checkout.paypal');
+            return view('home.checkout.paypal')->with(compact('core_config'));
         }
     }
 

@@ -49,7 +49,7 @@
                         -->
                         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="buyNow">
                             <input type="hidden" name="cmd" value="_xclick">
-                            <input type="hidden" name="business" value="abrakadabra3232@yandex.ru">
+                            <input type="hidden" name="business" value="{{$core_config['store_business_account']}}">
                             <input type="hidden" name="item_name" value="{{ session('cart.product_name') }}">
                             <input type="hidden" name="item_number" value="MEM32507725">
                             <input type="hidden" name="amount" value="{{ session('cart.product_price') }}">
