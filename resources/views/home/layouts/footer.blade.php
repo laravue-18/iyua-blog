@@ -1,6 +1,6 @@
 <footer class="page-footer font-small unique-color-dark">
 
-    <div style="background-color: #222;">
+    <div style="background: #6351ce;">
         <div class="container">
 
             <!-- Grid row-->
