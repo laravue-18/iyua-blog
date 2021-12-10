@@ -35,7 +35,7 @@ class CheckoutController extends Controller
             Order::create($data);
         }
 
-        session()->flash();
+        session()->put('cart');
 
         return view('home.checkout.success');
     }
