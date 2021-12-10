@@ -47,13 +47,17 @@
                             <input type="hidden" name="address_override" value="1">
                         </form>
                         -->
+                        @php $total = 0 @endphp
+                        @foreach(session('cart') as $id => $details)
+                            @php $total += $details['price'] * $details['quantity'] @endphp
+                        @endforeach
                         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="buyNow">
                             <input type="hidden" name="cmd" value="_xclick">
                             <input type="hidden" name="business" value="{{$core_config['store_business_account']}}">
-                            <input type="hidden" name="item_name" value="{{ session('cart.product_name') }}">
+{{--                            <input type="hidden" name="item_name" value="{{ session('cart.product_name') }}">--}}
                             <input type="hidden" name="item_number" value="MEM32507725">
-                            <input type="hidden" name="amount" value="{{ session('cart.product_price') }}">
-                            <input type="hidden" name="quantity" value="{{ session('cart.qty') }}">
+                            <input type="hidden" name="amount" value="{{ $total }}">
+{{--                            <input type="hidden" name="quantity" value="{{ session('cart.qty') }}">--}}
                             <input type="hidden" name="currency_code" value="USD">
                             <input type="hidden" name="return" value="{{ route('checkout.success') }}">
                             <input type="hidden" name="cancel_return" value="{{ route('checkout.cancel') }}">

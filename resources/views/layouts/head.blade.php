@@ -7,3 +7,4 @@
         <link href="{{ URL::asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ URL::asset('assets/css/app.css')}}" id="app-light" rel="stylesheet" type="text/css" />
         <link href="{{ URL::asset('assets/css/style.css')}}" id="app-light" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

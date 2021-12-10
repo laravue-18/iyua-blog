@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container py-5">
+        @include('layouts.messages')
+        <x-cart-drop-down></x-cart-drop-down>
         <h1 class="text-uppercase mb-4">Store</h1>
         <div class="row mb-5">
             <div class="col-md-7 order-md-2 align-middle">
@@ -25,7 +27,7 @@
                 <h2 class="mb-3">{{ request()->input('category') ? \App\Models\ProductCategory::find(request()->input('category'))->name : 'Products' }}</h2>
                 <div class="row">
                     @forelse($products as $product)
-                        <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="col-xl-4 col-sm-6">
                             <div class="card border">
                                 <div class="card-body">
                                     <div class="product-img position-relative">
@@ -40,7 +42,8 @@
 
                                         <h5 class="my-0"> <b>${{ $product->price }}</b></h5>
 
-                                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-secondary mt-4">Buy Now</a>
+                                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-secondary mt-4">Detail</a>
+                                        <a href="{{ route('cart.store', $product->id) }}" class="btn btn-secondary mt-4">Add to Cart</a>
 
                                     </div>
                                 </div>

@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('assets/images/carousel-1.png') }}" alt="..." class="d-block img-fluid">
+                <img src="{{ asset('assets/images/carousel-2.png') }}" alt="..." class="d-block img-fluid">
                 <div class="carousel-caption d-none d-md-block text-white-50">
                     <h1 class="text-white">Building the blocks of prosperity one step at a time!</h1>
                     <p>Lets take this journey together.</p>
@@ -34,7 +34,7 @@
             <p>Welcome to Today's Entrepreneur - the Broadcast Network that connects Businesses, Entrepreneurs, and Talent with/to their targeted audience globally.
                 We call it Today's Entrepreneur (TE) Tuesdays, where we interview and coach successful entrepreneurs as well as under the radar entrepreneurs; health & wellness, business and finance experts - share tangible tips and training.
             </p>
-            <a class="btn btn-outline-secondary waves-effect" href="{{ route('pages.show', 'about') }}" role="button">About Me &raquo;</a>
+            <a class="btn btn-primary waves-effect" href="{{ route('pages.show', 'about') }}" role="button">Learn more &raquo;</a>
         </div>
     </div>
 
@@ -46,17 +46,17 @@
                 <p>
                     Your dreams of building your own empire should not end up in frustration and struggle, trying to build a brand and aquire customers. Set your journey on a new path of business and self to a rewarding lifestyle that you always wanted.
                 </p>
-                <p><a class="btn btn-secondary" href="{{ route('pages.show', 'build') }}" role="button">Learn more &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{{ route('pages.show', 'build') }}" role="button">View Detail &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Grow</h2>
                 <p>We are with you every step of the way. Get your business ready to grow to the next level with community leverage, niche markets and technology. Watch your new master plan materialise before your eyes. Make money!</p>
-                <p><a class="btn btn-secondary" href="{{ route('pages.show', 'grow') }}" role="button">Learn more &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{{ route('pages.show', 'grow') }}" role="button">View Detail &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Master</h2>
                 <p>Learn how to conquer your dreams with your new master mind that keeps you on pin point decision making and accelerated profits. Network with like-minded entreprenuers for the exchange of ideas, success and pots of gold!</p>
-                <p><a class="btn btn-secondary" href="{{ route('pages.show', 'master') }}" role="button">Learn more &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{{ route('pages.show', 'master') }}" role="button">View Detail &raquo;</a></p>
             </div>
         </div>
 
@@ -82,7 +82,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <button class="btn btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#episode-modal-{{$episode['EPISODE_ID']}}">Listen Now!</button>
+                            <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#episode-modal-{{$episode['EPISODE_ID']}}">Go somewhere</button>
                             <div id="episode-modal-{{$episode['EPISODE_ID']}}" class="episodeModal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">

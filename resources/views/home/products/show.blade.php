@@ -1,8 +1,10 @@
 @extends('home.layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2 class="my-5">Product Detail</h2>
+    <div class="container py-5">
+        @include('layouts.messages')
+        <x-cart-drop-down></x-cart-drop-down>
+        <h2 class="mb-4">Product Detail</h2>
         <div class="card shadow border">
             <div class="card-body">
                 <div class="row">
@@ -22,17 +24,9 @@
                             <h5 class="mb-4">Price : <b>${{ $product->price }} USD</b></h5>
                             <p class="text-muted mb-4">{{ $product->description }}</p>
 
-                            <form action="{{ route('checkout.post') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" name="product_name" value="{{ $product->name }}">
-                                <input type="hidden" name="product_price" value="{{ $product->price }}">
-                                <div class="d-flex align-items-center mb-3">
-                                    <label class="mb-0">Quantity</label>
-                                    <input type="number" class="form-control ml-3" name="qty" style="width: 100px;" value="1">
-                                </div>
-                                <button class="btn btn-secondary">Checkout</button>
-                            </form>
+
+
+                            <a href="{{ route('cart.store', $product->id) }}" class="btn btn-secondary mt-4">Add to Cart</a>
 
                         </div>
                     </div>

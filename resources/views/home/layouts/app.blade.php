@@ -11,6 +11,7 @@
     <title>Today's Entrepreneur - Andrea James</title>
 
     @include('layouts.head')
+    @stack('css')
 
 </head>
 
@@ -23,6 +24,8 @@
     @include('home.layouts.footer')
 
     @include('layouts.footer-script')
+
+    @stack('script')
 
 </body>
 </html>

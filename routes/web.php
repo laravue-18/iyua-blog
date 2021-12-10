@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('podcast', [HomeController::class, 'podcast'])->name('podcast');
 Route::get('podcast/{id}', [HomeController::class, 'showPodcast'])->name('podcast.show');
 
-Route::get('store', [HomeController::class, 'store'])->name('store');
+Route::get('products', [HomeController::class, 'store'])->name('store');
 Route::get('products/{id}', [HomeController::class, 'showProduct'])->name('products.show');
+
+Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('cart/{id}', [CartController::class, 'store'])->name('cart.store');
+Route::patch('update-cart', [CartController::class, 'update'])->name('cart.update');
+Route::delete('cart', [CartController::class, 'destroy'])->name('cart.destroy');
 
 Route::get('posts', [HomeController::class, 'blog'])->name('posts');
 Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
@@ -32,6 +38,7 @@ Route::get('pages/{page}', [HomeController::class, 'showPage'])->name('pages.sho
 
 Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
 
+Route::view('checkout', 'home.checkout.address')->name('checkout.address');
 Route::post('checkout', [\App\Http\Controllers\CheckoutController::class, 'post'])->name('checkout.post');
 Route::get('checkout/success', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
 Route::get('checkout/cancel', [\App\Http\Controllers\CheckoutController::class, 'cancel'])->name('checkout.cancel');

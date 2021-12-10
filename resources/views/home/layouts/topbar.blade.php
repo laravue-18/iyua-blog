@@ -42,14 +42,14 @@
 
             <div>
                 @auth
-                    <a href="{{ route('user.dashboard') }}" class="btn btn-dark btn-sm">My Account</a>
-                    <a class="btn btn-dark btn-sm" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Sign Out </a>
+                    <a href="{{ route('user.dashboard') }}" class="btn btn-primary btn-sm">My Account</a>
+                    <a class="btn btn-primary btn-sm" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Sign Out </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 @endauth
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-dark btn-sm">Sign In</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Sign In</a>
                 @endguest
             </div>
 
